@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Banner = styled.div`
 
-    max-width: 1156px;
+    width: 1156px;
     height: 328px;
 
     background-image: url("imagens/banner.png");
@@ -17,10 +17,12 @@ const Banner = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    
 
+    h1{
+        margin-left: 30px;
+    }
+    
 `
 
 const TituloEstilizado = () => {

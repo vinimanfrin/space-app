@@ -13,7 +13,7 @@ const ItemListaEstilizado = styled.li`
 
 `
 
-const ItemNavegacao = (props, {ativo=true}) => {
+const ItemNavegacao = (props, {ativo=false}) => {
     return <ItemListaEstilizado $ativo={ativo}>
             <img src={ativo ? props.iconeAtivo : props.iconeInativo} alt="" />
             {props.children}
