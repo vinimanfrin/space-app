@@ -3,6 +3,7 @@ import EstilosGlobais from "./componentes/EstilosGlobais"
 import Cabecalho from "./componentes/Cabecalho"
 import BarraLateral from "./componentes/BarraLateral"
 import TituloEstilizado from "./componentes/TituloEstilizado"
+import Galeria from "./componentes/Galeria"
 
 
 const FundoGradiente = styled.div`
@@ -24,8 +25,14 @@ const AppContainer = styled.div`
 const MainContainer = styled.main`
 
   display: flex;
-  gap: 24px;
+  gap: 70px;
 
+`
+
+const ConteudoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `
 
 function App() {
@@ -37,7 +44,10 @@ function App() {
         <Cabecalho/>
         <MainContainer>
           <BarraLateral/>
-          <TituloEstilizado/>
+          <ConteudoGaleria>
+            <TituloEstilizado/>
+            <Galeria/>
+          </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
     </FundoGradiente>
