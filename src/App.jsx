@@ -41,6 +41,20 @@ const ConteudoGaleria = styled.section`
 function App() {
   const [fotosGaleria,setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null)
+  const aoAltenarFavorito = (foto) => {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita
+      })
+    }
+    setFotosGaleria(fotosGaleria.map(fotoDaGaleria => {
+      return {
+        ...fotoDaGaleria,
+        favorita: fotoDaGaleria.id === foto.id ? !foto.favorita : fotoDaGaleria.favorita
+      }
+    }))
+  }
   const fecharFoto = () => {
     setFotoSelecionada(null)
   }
@@ -54,12 +68,13 @@ function App() {
           <ConteudoGaleria>
             <TituloEstilizado/>
             <Galeria 
-              aoFotoSelecionada={foto => setFotoSelecionada(foto)}  
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)}
+              aoAltenarFavorito={aoAltenarFavorito}  
               fotos={fotosGaleria}/>
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} aoFechar={fecharFoto}/>
+      <ModalZoom foto={fotoSelecionada} aoFechar={fecharFoto} aoAltenarFavorito={aoAltenarFavorito}/>
     </FundoGradiente>
   )
 
