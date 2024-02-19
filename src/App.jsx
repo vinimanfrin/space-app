@@ -4,6 +4,8 @@ import Cabecalho from "./componentes/Cabecalho"
 import BarraLateral from "./componentes/BarraLateral"
 import TituloEstilizado from "./componentes/TituloEstilizado"
 import Galeria from "./componentes/Galeria"
+import fotos from "./fotos.json"
+import { useState } from "react"
 
 
 const FundoGradiente = styled.div`
@@ -36,7 +38,7 @@ const ConteudoGaleria = styled.section`
 `
 
 function App() {
-
+  const [fotosGaleria,SetFotosGaleria] = useState(fotos);
   return (
     <FundoGradiente>
       <EstilosGlobais/>
@@ -46,7 +48,7 @@ function App() {
           <BarraLateral/>
           <ConteudoGaleria>
             <TituloEstilizado/>
-            <Galeria/>
+            <Galeria fotos={fotosGaleria}/>
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
