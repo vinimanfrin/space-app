@@ -6,20 +6,34 @@ import Imagem from "./Imagem"
 
 const GaleriaContainer = styled.div`
     display: flex;
+    
 `
 
 const SecaoFluida = styled.section`
     flex-grow: 1;
+    padding: 10px;
 `
 
-const Galeria = ({fotos}) => {
+const ImagensContainer = styled.section`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+`
+
+const Galeria = ({fotos = [], aoFotoSelecionada}) => {
     return (
         <>
             <Tags/>
             <GaleriaContainer>
                 <SecaoFluida>
                     <Titulo>Navegue pela galeria</Titulo>
-                    {fotos.map(foto => <Imagem fotoObj={foto} key={foto.id}/>)}
+                    <ImagensContainer>
+                        {fotos.map(foto => <Imagem
+                            aoZoomSolicitado={aoFotoSelecionada}
+                            foto={foto} 
+                            key={foto.id}/>)}
+                    </ImagensContainer>
                 </SecaoFluida>
                 <Populares/>
             </GaleriaContainer>

@@ -6,6 +6,7 @@ import TituloEstilizado from "./componentes/TituloEstilizado"
 import Galeria from "./componentes/Galeria"
 import fotos from "./fotos.json"
 import { useState } from "react"
+import ModalZoom from "./componentes/ModalZoom"
 
 
 const FundoGradiente = styled.div`
@@ -18,7 +19,7 @@ const FundoGradiente = styled.div`
 
 const AppContainer = styled.div`
 
-  width: 1440px;
+  width: 1480px;
   max-width: 100%;
   margin: 0 auto;
 
@@ -38,7 +39,11 @@ const ConteudoGaleria = styled.section`
 `
 
 function App() {
-  const [fotosGaleria,SetFotosGaleria] = useState(fotos);
+  const [fotosGaleria,setFotosGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null)
+  const fecharFoto = () => {
+    setFotoSelecionada(null)
+  }
   return (
     <FundoGradiente>
       <EstilosGlobais/>
@@ -48,10 +53,13 @@ function App() {
           <BarraLateral/>
           <ConteudoGaleria>
             <TituloEstilizado/>
-            <Galeria fotos={fotosGaleria}/>
+            <Galeria 
+              aoFotoSelecionada={foto => setFotoSelecionada(foto)}  
+              fotos={fotosGaleria}/>
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      <ModalZoom foto={fotoSelecionada} aoFechar={fecharFoto}/>
     </FundoGradiente>
   )
 
